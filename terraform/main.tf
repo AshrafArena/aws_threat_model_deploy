@@ -35,14 +35,4 @@ module "alb" {
   certificate_arn   = var.acm_certificate_arn
 }
 
-module "acm" {
-  source      = "./modules/acm"
-  domain_name = "${var.subdomain}.${var.domain_name}"
-}
 
-module "route53" {
-  source        = "./modules/route53"
-  domain_name   = var.domain_name
-  subdomain     = var.subdomain
-  alb_dns_name  = module.alb.alb_dns_name
-}
