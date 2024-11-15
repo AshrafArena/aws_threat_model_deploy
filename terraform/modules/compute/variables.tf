@@ -33,3 +33,7 @@ variable "subdomain" {
 variable "vpc_id" {
   description = "The VPC ID."
 }
+
+variable "execution_role_arn" {
+  description = "The ARN of the execution role for the ECS task."
+}
