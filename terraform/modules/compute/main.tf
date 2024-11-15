@@ -1,8 +1,5 @@
-resource "aws_ecr_repository" "this" {
+data "aws_ecr_repository" "existing" {
   name = var.ecr_repo_name
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "aws_ecs_cluster" "this" {
@@ -30,7 +27,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "app" {
-  name            = "tm-ecs-service"
+  name            = "${var.app_name}-service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
@@ -42,7 +39,7 @@ resource "aws_ecs_service" "app" {
 }
 
 resource "aws_lb" "this" {
-  name               = "tm-app-alb"
+  name               = "${var.app_name}-alb"
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]
   subnets            = var.subnets
