@@ -3,11 +3,11 @@ resource "aws_vpc" "this" {
 }
 
 resource "aws_subnet" "public" {
-  count                   = 1
+  count                   = 2
   vpc_id                  = aws_vpc.this.id
   cidr_block              = cidrsubnet(var.vpc_cidr, 8, count.index)
   map_public_ip_on_launch = true
-  availability_zone       = "eu-west-2a"
+  availability_zone       = ["eu-west-2a", "eu-west-2b"][count.index]
 }
 
 resource "aws_security_group" "alb_sg" {
