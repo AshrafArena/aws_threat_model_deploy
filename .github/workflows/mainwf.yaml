@@ -20,6 +20,8 @@ jobs:
       TF_VAR_acm_certificate_arn: ${{ secrets.ACM_CERTIFICATE_ARN }}
       TF_VAR_route53_zone_id: ${{ secrets.AWS_ZONE_ID }}
       TF_VAR_domain_name: "achrafm.com"
+      TF_VAR_cluster_name: "TC-cluster"
+      TF_VAR_app_name: "Threat_composer"
       TF_VAR_subdomain: "threatcomposer"
       TF_VAR_vpc_cidr: "10.0.0.0/16"
       TF_VAR_cluster_name: "tc-cluster"

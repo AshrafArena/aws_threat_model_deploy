@@ -30,7 +30,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "app" {
-  name            = "${var.app_name}-service"
+  name            = "tm-ecs-service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
@@ -42,7 +42,7 @@ resource "aws_ecs_service" "app" {
 }
 
 resource "aws_lb" "this" {
-  name               = "${var.app_name}-alb"
+  name               = "tm-app-alb"
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]
   subnets            = var.subnets
