@@ -1,5 +1,8 @@
 resource "aws_ecr_repository" "this" {
   name = var.ecr_repo_name
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_ecs_cluster" "this" {

@@ -13,13 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+
       AWS_REGION: eu-west-2
+      TF_VAR_aws_region: "eu-west-2"
+      TF_VAR_ecr_repo_name: "achraf/threatcomposer"
       TF_VAR_acm_certificate_arn: ${{ secrets.ACM_CERTIFICATE_ARN }}
       TF_VAR_route53_zone_id: ${{ secrets.AWS_ZONE_ID }}
       TF_VAR_domain_name: "achrafm.com"
       TF_VAR_subdomain: "threatcomposer"
       TF_VAR_vpc_cidr: "10.0.0.0/16"
-      TF_VAR_ecr_repo_name: "achraf/threatcomposer"
       TF_VAR_cluster_name: "tc-cluster"
       TF_VAR_app_name: "my-app"
 
