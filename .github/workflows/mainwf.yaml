@@ -18,7 +18,6 @@ jobs:
       TF_VAR_aws_region: "eu-west-2"
       TF_VAR_acm_certificate_arn: ${{ secrets.ACM_CERTIFICATE_ARN }}
       TF_VAR_route53_zone_id: ${{ secrets.AWS_ZONE_ID }}
-      TF_VAR_execution_role_arn: ${{ secrets.EXECUTION_ROLE_ARN }}
       TF_VAR_ecr_image: ${{ secrets.ECR_IMAGE }}
       TF_VAR_domain_name: "achrafm.com"
       TF_VAR_cluster_name: "tC-cluster"
