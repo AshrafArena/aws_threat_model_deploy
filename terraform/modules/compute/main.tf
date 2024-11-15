@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "256"
   memory                   = "512"
-  execution_role_arn       = var.execution_role_arn
+  execution_role_arn       = "arn:aws:iam::971422696890:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   container_definitions    = jsonencode([{
     name      = var.app_name
     image     = aws_ecr_repository.this.repository_url
