@@ -1,4 +1,4 @@
-name: AWS Threat Composer deployment
+name: CI/CD Pipeline 
 
 on:
   push:
@@ -16,10 +16,10 @@ jobs:
 
       AWS_REGION: eu-west-2
       TF_VAR_aws_region: "eu-west-2"
-      TF_VAR_ecr_repo_name: "achraf/threatcomposer"
       TF_VAR_acm_certificate_arn: ${{ secrets.ACM_CERTIFICATE_ARN }}
       TF_VAR_route53_zone_id: ${{ secrets.AWS_ZONE_ID }}
       TF_VAR_execution_role_arn: ${{ secrets.EXECUTION_ROLE_ARN }}
+      TF_VAR_ecr_image: ${{ secrets.ECR_IMAGE }}
       TF_VAR_domain_name: "achrafm.com"
       TF_VAR_cluster_name: "tC-cluster"
       TF_VAR_app_name: "threat-composer"
@@ -43,18 +43,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-
-      - name: Building Docker image
-        run: |
-          docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/achraf/threatcomposer:${{ github.sha }} .
-
-      - name: Logging into Amazon ECR
-        run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
-
-      - name: Pushing Docker image to ECR
-        run: |
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/achraf/threatcomposer:${{ github.sha }}
 
       - name: Terraform Init
         run: terraform init -upgrade

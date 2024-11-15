@@ -6,16 +6,12 @@ variable "acm_certificate_arn" {
   description = "The ACM certificate ARN for HTTPS."
 }
 
-variable "route53_zone_id" {
-  description = "The Route 53 hosted zone ID."
-}
-
 variable "vpc_cidr" {
   description = "CIDR block for the VPC."
 }
 
-variable "ecr_repo_name" {
-  description = "The name of the ECR repository."
+variable "ecr_image" {
+  description = "The ECR image URL for the app container."
 }
 
 variable "cluster_name" {
@@ -33,3 +29,8 @@ variable "domain_name" {
 variable "subdomain" {
   description = "The subdomain to use for HTTPS."
 }
+
+variable "execution_role_arn" {
+  description = "The ARN of the execution role for the ECS task."
+}
+
