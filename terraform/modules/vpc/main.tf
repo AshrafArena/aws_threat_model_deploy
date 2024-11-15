@@ -21,7 +21,11 @@ resource "aws_subnet" "public" {
   cidr_block              = cidrsubnet(var.cidr_block, 8, count.index)
   map_public_ip_on_launch = true
   availability_zone       = element(data.aws_availability_zones.available.names, count.index)
+}
 
+resource "aws_route_table_association" "public" {
+  count          = 2
+  subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
 
