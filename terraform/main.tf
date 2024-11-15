@@ -19,7 +19,7 @@ module "ecs" {
   ecr_image         = var.ecr_image
   security_group_id = module.security_groups.ecs_sg_id
   subnets           = module.vpc.public_subnets
-  execution_role_arn = "arn:aws:iam::971422696890:role/ecs-task-execution-role"
+  execution_role_arn = var.execution_role_arn
   target_group_arn  = module.alb.target_group_arn
 }
 
