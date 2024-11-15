@@ -2,37 +2,20 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "vpc" {
-  source     = "./modules/vpc"
-  cidr_block = var.vpc_cidr
+module "networking" {
+  source     = "./modules/networking"
+  vpc_cidr   = var.vpc_cidr
 }
 
-module "security_groups" {
-  source = "./modules/security-groups"
-  vpc_id = module.vpc.vpc_id
-}
-
-module "ecr" {
-  source    = "./modules/ecr"
-  repo_name = var.ecr_repo_name
-}
-
-module "ecs" {
-  source            = "./modules/ecs"
+module "compute" {
+  source            = "./modules/compute"
   cluster_name      = var.cluster_name
   app_name          = var.app_name
-  ecr_image         = module.ecr.repository_url
-  security_group_id = module.security_groups.ecs_sg_id
-  subnets           = module.vpc.public_subnets
-}
-
-module "alb" {
-  source            = "./modules/alb"
-  vpc_id            = module.vpc.vpc_id
-  subnets           = module.vpc.public_subnets
-  security_group_id = module.security_groups.alb_sg_id
-  target_group_arn  = module.ecs.target_group_arn
+  ecr_repo_name     = var.ecr_repo_name
+  security_group_id = module.networking.ecs_sg_id
+  subnets           = module.networking.public_subnets
+  vpc_id            = module.networking.vpc_id
   certificate_arn   = var.acm_certificate_arn
+  domain_name       = var.domain_name
+  subdomain         = var.subdomain
 }
-
-

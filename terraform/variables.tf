@@ -1,27 +1,35 @@
 variable "aws_region" {
-  default = "eu-west-2"
+  description = "AWS region for resources"
+}
+
+variable "acm_certificate_arn" {
+  description = "The ACM certificate ARN for HTTPS."
+}
+
+variable "route53_zone_id" {
+  description = "The Route 53 hosted zone ID."
 }
 
 variable "vpc_cidr" {
-  default = "10.0.0.0/16"
+  description = "CIDR block for the VPC."
 }
 
 variable "ecr_repo_name" {
-  default = "achraf/threatcomposer"
+  description = "The name of the ECR repository."
 }
 
 variable "cluster_name" {
-  default = "ecs-cluster"
+  description = "The name of the ECS cluster."
 }
 
 variable "app_name" {
-  default = "threat-composer"
+  description = "The application name for ECS."
 }
 
 variable "domain_name" {
-  default = "*.achrafm.com"
+  description = "The root domain name."
 }
 
 variable "subdomain" {
-  default = "threatcomposer.achrafm.com"
+  description = "The subdomain to use for HTTPS."
 }
