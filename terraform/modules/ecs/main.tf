@@ -8,12 +8,12 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = var.execution_role_arn
   cpu                      = "256" 
-  memory                   = "512" 
+  memory                   = "2048" 
   container_definitions    = jsonencode([{
     name      = var.app_name
     image     = var.ecr_image
     cpu       = 256
-    memory    = 512
+    memory    = 2048
     essential = true
     portMappings = [{
       containerPort = 3000
