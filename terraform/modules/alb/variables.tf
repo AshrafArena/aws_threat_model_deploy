@@ -1,27 +1,19 @@
 variable "app_name" {
-  description = "The application name."
+  description = "Name of the application."
 }
 
 variable "vpc_id" {
-  description = "The VPC ID for the ALB."
+  description = "VPC ID where the ALB is deployed."
 }
 
 variable "subnets" {
-  description = "The subnets for the ALB."
+  description = "Subnets where the ALB will be deployed."
 }
 
 variable "security_group_id" {
-  description = "The security group for the ALB."
+  description = "Security group for the ALB."
 }
 
 variable "certificate_arn" {
-  description = "The ACM certificate ARN for the HTTPS listener."
-}
-
-variable "domain_name" {
-  description = "The root domain name."
-}
-
-variable "subdomain" {
-  description = "The subdomain to use for HTTPS."
+  description = "ARN of the ACM Certificate for HTTPS."
 }

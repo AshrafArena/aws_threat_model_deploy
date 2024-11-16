@@ -1,3 +1,7 @@
 variable "vpc_id" {
-  description = "The VPC ID for the security groups."
+  description = "VPC ID for the security groups."
+}
+
+variable "app_name" {
+  description = "Application name for tagging and naming resources."
 }
