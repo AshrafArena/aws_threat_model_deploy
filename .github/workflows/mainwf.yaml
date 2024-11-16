@@ -55,6 +55,3 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: ./terraform
 
-      - name: Fetch ECS Task Logs
-        run: |
-          aws logs get-log-events --log-group-name /ecs/tC-cluster --region ${{ env.AWS_REGION }} --limit 100
