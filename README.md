@@ -1,4 +1,5 @@
-# Threat Composer Deployment 🚀
+# Threat Composer App Deployment 🚀 ![CI/CD Workflow](https://github.com/AshrafArena/aws_threat_model_deploy/actions/workflows/mainwf.yaml/badge.svg)
+
 
 This is a project i took on to automate the deployment of the AWS Threat Composer application by containerising the app, orchestrating its deployment to AWS Elastic Container Service (ECS), and managing infrastructure with Terraform. The entire workflow is seamlessly executed through GitHub Actions, ensuring a continuous and reliable deployment pipeline.
 
