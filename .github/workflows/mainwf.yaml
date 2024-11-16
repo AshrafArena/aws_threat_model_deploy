@@ -19,7 +19,7 @@ jobs:
       TF_VAR_aws_region: "eu-west-2"
       TF_VAR_acm_certificate_arn: ${{ secrets.ACM_CERTIFICATE_ARN }}
       TF_VAR_route53_zone_id: ${{ secrets.AWS_ZONE_ID }}
-      TF_VAR_ecr_image: ${{ secrets.ECR_IMAGE }}
+      TF_VAR_ecr_image: "971422696890.dkr.ecr.eu-west-2.amazonaws.com/achraf/threatcomposer:fe3c8152d8f5de18611af5b41ada4d924b2093ea"
       TF_VAR_domain_name: "achrafm.com"
       TF_VAR_cluster_name: "tC-cluster"
       TF_VAR_app_name: "threat-composer"
