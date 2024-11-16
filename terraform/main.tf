@@ -29,3 +29,11 @@ module "ecs" {
   execution_role_arn = var.execution_role_arn
   target_group_arn  = module.alb.target_group_arn
 }
+
+module "route53" {
+  source           = "./modules/route53"
+  route53_zone_id  = var.route53_zone_id
+  subdomain        = var.subdomain
+  alb_dns_name     = module.alb.dns_name
+  alb_zone_id      = module.alb.zone_id
+}
