@@ -7,6 +7,7 @@ module "vpc" {
 module "security_groups" {
   source  = "./modules/security-groups"
   vpc_id  = module.vpc.vpc_id
+  app_name  = var.app_name
 }
 
 module "alb" {
