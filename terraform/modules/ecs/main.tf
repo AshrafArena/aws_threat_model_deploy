@@ -7,6 +7,8 @@ resource "aws_ecs_task_definition" "app" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = var.execution_role_arn
+  cpu                      = "256" 
+  memory                   = "512" 
   container_definitions    = jsonencode([{
     name      = var.app_name
     image     = var.ecr_image
