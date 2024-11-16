@@ -1,6 +1,7 @@
 module "vpc" {
   source     = "./modules/vpc"
   cidr_block = var.vpc_cidr
+  app_name   = var.app_name
 }
 
 module "security_groups" {
