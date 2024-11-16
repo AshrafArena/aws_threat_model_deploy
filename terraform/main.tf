@@ -34,6 +34,6 @@ module "route53" {
   source           = "./modules/route53"
   route53_zone_id  = var.route53_zone_id
   subdomain        = var.subdomain
-  alb_dns_name     = module.alb.dns_name
+  alb_dns_name     = module.alb.alb_dns_name
   alb_zone_id      = module.alb.zone_id
 }

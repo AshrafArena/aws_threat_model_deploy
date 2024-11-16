@@ -25,3 +25,7 @@ variable "app_name" {
 variable "ecr_image" {
   description = "ECR image URL with tag."
 }
+
+variable "subdomain" {
+  description = "subdomain of the root domain"
+}
