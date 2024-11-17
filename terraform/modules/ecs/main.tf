@@ -23,7 +23,7 @@ resource "aws_ecs_task_definition" "app" {
       logDriver = "awslogs"
       options = {
         awslogs-group         = "/ecs/${var.app_name}" 
-        awslogs-region        = var.aws_region        
+        awslogs-region        = "eu-west-2"       
         awslogs-stream-prefix = var.app_name          
       }
     }

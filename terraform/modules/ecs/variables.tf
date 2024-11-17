@@ -26,6 +26,3 @@ variable "target_group_arn" {
   description = "Target group ARN for the ALB."
 }
 
-variable "aws_region" {
-  
-}
