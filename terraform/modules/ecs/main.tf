@@ -19,12 +19,20 @@ resource "aws_ecs_task_definition" "app" {
       containerPort = 3000
       hostPort      = 3000
     }]
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        awslogs-group         = "/ecs/${var.app_name}" 
+        awslogs-region        = var.aws_region        
+        awslogs-stream-prefix = var.app_name          
+      }
+    }
   }])
 }
 
 resource "aws_ecs_service" "app" {
   name            = "${var.app_name}-service"
-  cluster        = aws_ecs_cluster.this.id
+  cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
   launch_type     = "FARGATE"
